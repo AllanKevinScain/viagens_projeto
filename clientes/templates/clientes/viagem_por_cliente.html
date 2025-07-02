@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<div class="container-sm mt-5">
+    <h2 class="h1">Histórico de Viagens de {{ cliente.nome }}</h2>
+</div>
+        
+<div class="container-sm mt-2">
+    <div class="bg-dark rounded-3 overflow-hidden">
+        <table cellpadding="5" cellspacing="1" class="table table-dark table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>Destino</th>
+                    <th>Data da Partida</th>
+                    <th>Preço (R$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for viagem in viagens %}
+                <tr>
+                    <td>{{ viagem.destino }}</td>
+                    <td>{{ viagem.data_partida|date:"d/m/Y" }}</td>
+                    <td>{{ viagem.preco|floatformat:2 }}</td>
+                </tr>
+                 {% empty %}
+            <tr>
+                <td colspan="4">Este cliente ainda não foi incluído em nenhuma viagem.</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+    
+
+    <br>
+
+{% endblock %}

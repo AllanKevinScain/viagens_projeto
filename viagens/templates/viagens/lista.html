@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-sm mt-5">
+    <h1 class="h1">Lista de viagens</h1>
+</div>
+<div class="container-sm mt-2">
+    <div class="bg-dark rounded-3 overflow-hidden">
+        <table cellpadding="5" cellspacing="1" class="table table-dark table-striped mb-0">
+        <thead>
+            <tr>
+                <th>Destino</th>
+                <th>Data Partida</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for viagem in viagens %}
+            <tr>
+                <td>{{ viagem.destino }}</td>
+                <td>{{ viagem.data_partida }}</td>
+                <td>{{ viagem.preco }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Nenhuma viagem cadastrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+
+    <div class="container-sm mt-5">
+    <a href="{% url 'viagens:cadastrar' %}">Cadastrar viagem</a>
+</div>
+{% endblock %}
